@@ -27,4 +27,4 @@ A repository with a simple REST API application written in TypeScript and deploy
 
 ## ❓ Questions? Comments? 
 
-If you have any questions about the code developed, feel free to open an **[ISSUE HERE](https://github.com/glaucia86/api-rest-ts-aks/issues)**. We'll get back to you
+If you have any questions about the code developed, feel free to open an **[ISSUE HERE](https://github.com/glaucia86/api-rest-ts-aks/issues)**. We'll get back to you soon!
