@@ -18,5 +18,11 @@
     "cd"
   ],
   "author": "Glaucia Lemos <Twitter: @glaucia_lemos86>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "tsc": "^2.0.4",
+    "typescript": "^5.2.2"
+  }
 }
