@@ -1,0 +1,22 @@
+{
+  "name": "api-rest-ts-aks",
+  "version": "1.0.0",
+  "description": "A repository with a simple REST API application written in TypeScript and deployed to Azure Kubernetes Service (AKS) using Terraform and GitHub Actions for CI/CD.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "typescript",
+    "rest",
+    "api",
+    "aks",
+    "terraform",
+    "github",
+    "actions",
+    "ci",
+    "cd"
+  ],
+  "author": "Glaucia Lemos <Twitter: @glaucia_lemos86>",
+  "license": "MIT"
+}
