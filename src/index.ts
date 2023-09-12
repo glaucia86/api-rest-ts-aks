@@ -18,6 +18,7 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Application running on port: ${port}!`));
 
+// GET: localhost:3000/employees 
 app.get('/employees', async (_req, res) => {
   const mongoGetEmployeesRepository = new MongoGetEmployeesRepository();
 
