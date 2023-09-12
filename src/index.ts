@@ -5,20 +5,26 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
-import express from 'express';
-import { config } from 'dotenv';
+import express, { Application } from 'express';
+import morgan from 'morgan';
+import helmet from 'helmet';
+import dotenv from 'dotenv';
 import { GetEmployeesController } from './controllers/get-employees/get-employees';
 import { MongoGetEmployeesRepository } from './repositories/get-employees/mongo-get-employees';
 
-config();
-
-const app = express();
+dotenv.config();
 
 const port = process.env.PORT || 3000;
+const app: Application = express();
+
+app.use(morgan('dev'));
+app.use(helmet());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.listen(port, () => console.log(`Application running on port: ${port}!`));
 
-// GET: localhost:3000/employees 
+// GET: localhost:3000/employees
 app.get('/employees', async (_req, res) => {
   const mongoGetEmployeesRepository = new MongoGetEmployeesRepository();
 
