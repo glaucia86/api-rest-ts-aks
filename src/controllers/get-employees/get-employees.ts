@@ -21,7 +21,7 @@ export class GetEmployeesController implements IGetEmployeesController {
     } catch (error) {
       return {
         statusCode: 500,
-        body: new Error('Internal server error...!')
+        body: 'Error to return the Employees!'
       }
     }
   }

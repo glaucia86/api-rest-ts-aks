@@ -6,9 +6,10 @@
  */
 
 import { Employee } from "../../models/employee";
+import { HttpResponse } from "../protocols";
 
 export interface IGetEmployeesController {
-  handle(): any;
+  handle(): Promise<HttpResponse<Employee[]>>;
 }
 
 export interface IGetEmployeesRepository {
