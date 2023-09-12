@@ -12,10 +12,6 @@ services:
     volumes:
       - mongodb_data_container:/data/db
 
-volumes:
-  mongodb_data_container:
-    driver: local
-
   app:
     build: .
     command: ./.docker/start.sh
@@ -27,3 +23,7 @@ volumes:
       - '3000:3000'
     depends_on:
       - mongodb_container
+
+volumes:
+  mongodb_data_container:
+    driver: local
