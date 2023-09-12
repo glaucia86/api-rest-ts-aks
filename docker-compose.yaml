@@ -1,14 +1,29 @@
-version: '3.7'
+version: '3'
+
 services:
   mongodb_container:
     image: mongo:latest
+    container_name: mongodb_container
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_ROOT_PASSWORD: DevSquad!2023
     ports:
-      - 27017:27017
+      - '27017:27017'
     volumes:
       - mongodb_data_container:/data/db
 
 volumes:
   mongodb_data_container:
+    driver: local
+
+  app:
+    build: .
+    command: ./.docker/start.sh
+    container_name: app
+    tty: true
+    volumes:
+      - .:/home/node/app
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongodb_container
