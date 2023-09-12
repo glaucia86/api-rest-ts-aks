@@ -4,6 +4,7 @@
   "description": "A repository with a simple REST API application written in TypeScript and deployed to Azure Kubernetes Service (AKS) using Terraform and GitHub Actions for CI/CD.",
   "main": "index.js",
   "scripts": {
+    "start:dev": "nodemon --watch 'src/' --exec 'ts-node' src/index.ts -e ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
