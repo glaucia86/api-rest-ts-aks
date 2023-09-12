@@ -19,7 +19,19 @@ A repository with a simple REST API application written in TypeScript and deploy
 
 ## 🔥 How to run the application locally?
 
-(under construction)
+We are using Docker to run the application locally. For that, run the following commands below:
+
+```bash
+docker-compose up -d
+```
+
+And to see if the container is running, run the following command below:
+
+```bash
+docker ps
+```
+
+After running the command above, access the browser at the following url: ``
 
 ## Diagram of the Application
 
