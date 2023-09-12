@@ -31,7 +31,13 @@ And to see if the container is running, run the following command below:
 docker ps
 ```
 
-After running the command above, access the browser at the following url: ``
+After running the command above, access the browser at the following url: `localhost:3000/employees` 
+
+To stop the container, run the following command below:
+
+```bash
+docker compose down -- volumes
+```
 
 ## Diagram of the Application
 
