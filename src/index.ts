@@ -5,7 +5,7 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
-import express, { Application } from 'express';
+import express, { Application, Request, Response } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.listen(port, () => console.log(`Application running on port: ${port}!`));
 
 // GET: localhost:3000/employees
-app.get('/employees', async (_req, res) => {
+app.get('/employees', async (_req: Request, res: Response) => {
   const mongoGetEmployeesRepository = new MongoGetEmployeesRepository();
 
   const getEmployeesController = new GetEmployeesController(mongoGetEmployeesRepository);
