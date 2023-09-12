@@ -6,19 +6,20 @@
  */
 
 import { IGetEmployeesRepository } from "../../controllers/get-employees/protocols";
+import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
 
 export class MongoGetEmployeesRepository implements IGetEmployeesRepository {
   async getEmployees(): Promise<Employee[]> {
-    return [
-      {
-        firstName: 'Glaucia',
-        lastName: 'Lemos',
-        email: 'gllemos@microsoft.com',
-        rolePosition: 'Developer Advocate',
-        password: '123456'
-      }
-    ];
-  }
 
+    const employees = await MongoClient.db
+      .collection<Omit<Employee, 'id'>>('employees')
+      .find({})
+      .toArray();
+
+    return employees.map(({ _id, ...employee }) => ({
+      ...employee,
+      id: _id.toHexString(),
+    }));
+  }
 }
