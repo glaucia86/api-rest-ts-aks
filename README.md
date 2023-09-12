@@ -22,7 +22,7 @@ A repository with a simple REST API application written in TypeScript and deploy
 We are using Docker to run the application locally. For that, run the following commands below:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 And to see if the container is running, run the following command below:
