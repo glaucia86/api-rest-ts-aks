@@ -8,7 +8,7 @@
 import express, { Application, Request, Response } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
 import { GetEmployeesController } from './controllers/get-employees/get-employees';
 import { MongoGetEmployeesRepository } from './repositories/get-employees/mongo-get-employees';
 import { MongoClient } from './database/mongo';
@@ -16,16 +16,16 @@ import { MongoClient } from './database/mongo';
 
 const main = async () => {
 
-  dotenv.config();
+  config();
 
   const app: Application = express();
+
+  await MongoClient.connect();
 
   app.use(morgan('dev'));
   app.use(helmet());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-
-  await MongoClient.connect();
 
   // GET: localhost:3000/employees
   app.get('/employees', async (_req: Request, res: Response) => {
