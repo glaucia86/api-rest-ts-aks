@@ -7,6 +7,8 @@
 
 import express from 'express';
 import { config } from 'dotenv';
+import { GetEmployeesController } from './controllers/get-employees/get-employees';
+import { MongoGetEmployeesRepository } from './repositories/get-employees/mongo-get-employees';
 
 config();
 
@@ -16,6 +18,12 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Application running on port: ${port}!`));
 
-app.get('/', (req, res) => {
-  res.send('Hi, friends!');
+app.get('/employees', async (_req, res) => {
+  const mongoGetEmployeesRepository = new MongoGetEmployeesRepository();
+
+  const getEmployeesController = new GetEmployeesController(mongoGetEmployeesRepository);
+
+  const { body, statusCode } = await getEmployeesController.handle();
+
+  res.send(body).status(statusCode);
 });
