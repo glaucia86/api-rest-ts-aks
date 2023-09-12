@@ -5,10 +5,24 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
-import { IGetEmployeesController } from "./protocols";
+import { IGetEmployeesController, IGetEmployeesRepository } from "./protocols";
 
 export class GetEmployeesController implements IGetEmployeesController {
-  handle() {
+  constructor(private readonly getEmployeesRepository: IGetEmployeesRepository) { }
 
+  async handle() {
+    try {
+      const employees = await this.getEmployeesRepository.getEmployees();
+
+      return {
+        statusCode: 200,
+        body: employees
+      }
+    } catch (error) {
+      return {
+        statusCode: 500,
+        body: new Error('Internal server error...!')
+      }
+    }
   }
 }
