@@ -4,4 +4,8 @@ USER node
 
 WORKDIR /home/node/app
 
-CMD ["tail", "-f", "/dev/null"]
+COPY --chown=node package*.json ./
+
+RUN npm install
+
+CMD ["npm", "run", "start:dev"]
