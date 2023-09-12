@@ -11,26 +11,37 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import { GetEmployeesController } from './controllers/get-employees/get-employees';
 import { MongoGetEmployeesRepository } from './repositories/get-employees/mongo-get-employees';
+import { MongoClient } from './database/mongo';
 
-dotenv.config();
 
-const port = process.env.PORT || 3000;
-const app: Application = express();
+const main = async () => {
 
-app.use(morgan('dev'));
-app.use(helmet());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+  dotenv.config();
 
-app.listen(port, () => console.log(`Application running on port: ${port}!`));
+  const app: Application = express();
 
-// GET: localhost:3000/employees
-app.get('/employees', async (_req: Request, res: Response) => {
-  const mongoGetEmployeesRepository = new MongoGetEmployeesRepository();
+  app.use(morgan('dev'));
+  app.use(helmet());
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
-  const getEmployeesController = new GetEmployeesController(mongoGetEmployeesRepository);
+  await MongoClient.connect();
 
-  const { body, statusCode } = await getEmployeesController.handle();
+  // GET: localhost:3000/employees
+  app.get('/employees', async (_req: Request, res: Response) => {
+    const mongoGetEmployeesRepository = new MongoGetEmployeesRepository();
 
-  res.send(body).status(statusCode);
-});
+    const getEmployeesController = new GetEmployeesController(mongoGetEmployeesRepository);
+
+    const { body, statusCode } = await getEmployeesController.handle();
+
+    res.send(body).status(statusCode);
+  });
+
+  const port = process.env.PORT || 3000;
+
+  app.listen(port, () => console.log(`Application running on port: ${port}!`));
+}
+
+main();
+
