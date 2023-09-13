@@ -17,8 +17,8 @@ export class MongoGetEmployeesRepository implements IGetEmployeesRepository {
       .find({})
       .toArray();
 
-    return employees.map(({ _id, ...employee }) => ({
-      ...employee,
+    return employees.map(({ _id, ...restEmployee }) => ({
+      ...restEmployee,
       id: _id.toHexString(),
     }));
   }
