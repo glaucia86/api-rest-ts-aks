@@ -9,29 +9,34 @@ import { CreateEmployeeParams, ICreateEmployeeRepository } from "../../controlle
 import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
 
-export class MongoCreateEmployee implements ICreateEmployeeRepository {
+export class MongoCreateEmployeeRepository implements ICreateEmployeeRepository {
   async createEmployee(params: CreateEmployeeParams): Promise<Employee> {
 
-    // we are creating a new employee in the database
-    const { insertedId } = await MongoClient.db
-      .collection('employees')
-      .insertOne(params);
+    try {
+      // we are creating a new employee in the database
+      const { insertedId } = await MongoClient.db
+        .collection('employees')
+        .insertOne(params);
 
-    // here we are searching if the employee was created
-    const employee = await MongoClient.db
-      .collection<Omit<Employee, 'id'>>('employees')
-      .findOne({ _id: insertedId });
+      // here we are searching if the employee was created
+      const employee = await MongoClient.db
+        .collection<Omit<Employee, 'id'>>('employees')
+        .findOne({ _id: insertedId });
 
-    // if the employee was not created, we throw an error
-    if (!employee) {
-      throw new Error('Employee not created');
-    }
+      // if the employee was not created, we throw an error
+      if (!employee) {
+        throw new Error('Employee not created');
+      }
 
-    // if the employee was created, we return the employee
-    const { _id, ...restEmployee } = employee;
-    return {
-      id: _id.toHexString(),
-      ...restEmployee,
+      // if the employee was created, we return the employee
+      const { _id, ...restEmployee } = employee;
+      return {
+        id: _id.toHexString(),
+        ...restEmployee,
+      }
+    } catch (error) {
+      console.log('Error...:', error);
+      throw error;
     }
   }
 }

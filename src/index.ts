@@ -12,6 +12,8 @@ import { config } from 'dotenv';
 import { GetEmployeesController } from './controllers/get-employees/get-employees';
 import { MongoGetEmployeesRepository } from './repositories/get-employees/mongo-get-employees';
 import { MongoClient } from './database/mongo';
+import { MongoCreateEmployeeRepository } from './repositories/create-employees/mongo-create-employee';
+import { CreateEmployeeController } from './controllers/create-employee/create-employee';
 
 
 const main = async () => {
@@ -41,6 +43,20 @@ const main = async () => {
     const { body, statusCode } = await getEmployeesController.handle();
 
     res.send(body).status(statusCode);
+  });
+
+  // POST: localhost:3000/employees
+  app.post('/employees', async (req: Request, res: Response) => {
+    const mongoCreateEmployeeRepository = new MongoCreateEmployeeRepository();
+
+    const createEmployeeController = new CreateEmployeeController(mongoCreateEmployeeRepository);
+
+    const { body, statusCode } = await createEmployeeController.handle({
+      body: req.body
+    });
+
+    res.send(body).status(statusCode);
+
   });
 
   const port = process.env.PORT || 3000;
