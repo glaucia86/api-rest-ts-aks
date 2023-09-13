@@ -24,9 +24,8 @@ Content-Type: application/json
 {
   "firstName": "Glaucia",
   "lastName": "Lemos",
-  "email": "glaucia.lemos@microsoft.com",
   "rolePosition": "Developer Advocate",
-  "password": "glau123"
+  "password": "glau12396"
 }
 
 ### Delete a employee
