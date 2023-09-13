@@ -16,6 +16,8 @@ import { MongoCreateEmployeeRepository } from './repositories/create-employees/m
 import { CreateEmployeeController } from './controllers/create-employee/create-employee';
 import { MongoUpdateEmployeeRepository } from './repositories/update-employee/mongo-update-employee';
 import { UpdateEmployeeController } from './controllers/update-employee/update-employee';
+import { MongoGetEmployeeRepository } from './repositories/get-employee/mongo-get-employee';
+import { GetEmployeeController } from './controllers/get-employee/get-employee';
 
 
 const main = async () => {
@@ -73,6 +75,20 @@ const main = async () => {
 
     res.status(statusCode).send(body);
   });
+
+  // GET (By ID): localhost:3000/employees/:id
+  app.get('/employees/:id', async (req: Request, res: Response) => {
+    const mongoGetEmployeeRepository = new MongoGetEmployeeRepository();
+
+    const getEmployeeController = new GetEmployeeController(mongoGetEmployeeRepository);
+
+    const { body, statusCode } = await getEmployeeController.handle({
+      params: req.params
+    });
+
+    res.status(statusCode).send(body);
+  });
+
 
   const port = process.env.PORT || 3000;
 
