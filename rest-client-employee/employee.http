@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ### Retrieve a single employee
-GET http://localhost:3000/employees/${id}
+GET http://localhost:3000/employees/65021bb9e27e1484b42613dc
 
 ### Update a employee
 PATCH http://localhost:3000/employees/65021bb9e27e1484b42613dc
