@@ -10,10 +10,10 @@ import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
 
 export class MongoGetEmployeesRepository implements IGetEmployeesRepository {
-  async getEmployees(): Promise<Employee[]> {
 
+  async getEmployees(): Promise<Employee[]> {
     const employees = await MongoClient.db
-      .collection<Omit<Employee, 'id'>>('employees')
+      .collection<Omit<Employee, "id">>('employees')
       .find({})
       .toArray();
 

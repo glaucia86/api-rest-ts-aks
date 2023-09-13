@@ -18,7 +18,9 @@ export const MongoClient = {
     const password = process.env.MONGODB_PASSWORD;
 
     const client = new Mongo(url, { auth: { username, password } });
-    const db = client.db('employees-db');
+    const db = client.db(process.env.MONGODB_NAME);
+
+    console.log(process.env.MONGODB_NAME)
 
     this.client = client;
     this.db = db;
