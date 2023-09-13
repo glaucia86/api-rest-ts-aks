@@ -42,7 +42,7 @@ const main = async () => {
 
     const { body, statusCode } = await getEmployeesController.handle();
 
-    res.send(body).status(statusCode);
+    res.status(statusCode).send(body);
   });
 
   // POST: localhost:3000/employees
@@ -55,7 +55,7 @@ const main = async () => {
       body: req.body
     });
 
-    res.send(body).status(statusCode);
+    res.status(statusCode).send(body);
 
   });
 
