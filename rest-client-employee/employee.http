@@ -1,0 +1,33 @@
+
+### Retrieve all employees
+GET http://localhost:3000/employees
+
+### Create a new employee
+POST http://localhost:3000/employees
+Content-Type: application/json
+
+{
+  "firstName": "Glaucia",
+  "lastName": "Lemos",
+  "email": "gllemos@microsoft.com",
+  "rolePosition": "Developer Advocate",
+  "password": "glau123"
+}
+
+### Retrieve a single employee
+GET http://localhost:3000/employees/${id}
+
+### Update a employee
+PUT http://localhost:3000/employees/${id}
+Content-Type: application/json
+
+{
+  "firstName": "Glaucia",
+  "lastName": "Lemos",
+  "email": "glaucia.lemos@microsoft.com",
+  "rolePosition": "Developer Advocate",
+  "password": "glau123"
+}
+
+### Delete a employee
+DELETE http://localhost:3000/employees/${id}
