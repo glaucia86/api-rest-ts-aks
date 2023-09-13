@@ -20,7 +20,12 @@ const main = async () => {
 
   const app: Application = express();
 
-  await MongoClient.connect();
+  try {
+    await MongoClient.connect();
+    console.log('Connected to MongoDB')
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+  }
 
   app.use(morgan('dev'));
   app.use(helmet());
