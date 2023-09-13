@@ -14,6 +14,8 @@ import { MongoGetEmployeesRepository } from './repositories/get-employees/mongo-
 import { MongoClient } from './database/mongo';
 import { MongoCreateEmployeeRepository } from './repositories/create-employees/mongo-create-employee';
 import { CreateEmployeeController } from './controllers/create-employee/create-employee';
+import { MongoUpdateEmployeeRepository } from './repositories/update-employee/mongo-update-employee';
+import { UpdateEmployeeController } from './controllers/update-employee/update-employee';
 
 
 const main = async () => {
@@ -56,7 +58,20 @@ const main = async () => {
     });
 
     res.status(statusCode).send(body);
+  });
 
+  // PATCH: localhost:3000/employees/:id
+  app.patch('/employees/:id', async (req: Request, res: Response) => {
+    const mongoUpdateEmployeeRepository = new MongoUpdateEmployeeRepository();
+
+    const updateEmployeeController = new UpdateEmployeeController(mongoUpdateEmployeeRepository);
+
+    const { body, statusCode } = await updateEmployeeController.handle({
+      body: req.body,
+      params: req.params
+    });
+
+    res.status(statusCode).send(body);
   });
 
   const port = process.env.PORT || 3000;
