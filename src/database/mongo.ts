@@ -13,7 +13,7 @@ export const MongoClient = {
   db: undefined as unknown as Db,
 
   async connect(): Promise<void> {
-    const url = process.env.MONGODB_LOCAL_URL as string;
+    const url = process.env.MONGODB_URL as string;
 
     const client = new Mongo(url);
     const db = client.db(process.env.MONGODB_NAME);
