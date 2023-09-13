@@ -34,13 +34,22 @@ const main = async () => {
 
   // GET: localhost:3000/employees
   app.get('/employees', async (_req: Request, res: Response) => {
+    console.log('cheguei aqui....')
     const mongoGetEmployeesRepository = new MongoGetEmployeesRepository();
+
+    console.log('cheguei aqui 1....')
 
     const getEmployeesController = new GetEmployeesController(mongoGetEmployeesRepository);
 
+    console.log('cheguei aqui 2....')
+
     const { body, statusCode } = await getEmployeesController.handle();
 
+    console.log('cheguei aqui 3....')
+
     res.send(body).status(statusCode);
+
+    console.log('cheguei aqui 4....')
   });
 
   const port = process.env.PORT || 3000;
