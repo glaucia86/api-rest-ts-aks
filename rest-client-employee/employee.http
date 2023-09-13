@@ -18,7 +18,7 @@ Content-Type: application/json
 GET http://localhost:3000/employees/${id}
 
 ### Update a employee
-PUT http://localhost:3000/employees/${id}
+PATCH http://localhost:3000/employees/65021bb9e27e1484b42613dc
 Content-Type: application/json
 
 {
