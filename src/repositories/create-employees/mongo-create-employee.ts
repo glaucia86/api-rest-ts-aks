@@ -35,7 +35,7 @@ export class MongoCreateEmployeeRepository implements ICreateEmployeeRepository 
         ...restEmployee,
       }
     } catch (error) {
-      console.log('Error...:', error);
+      console.log('Error to create a new employee...:', error);
       throw error;
     }
   }
