@@ -19,7 +19,6 @@ export class GetEmployeesController implements IGetEmployeesController {
         body: employees
       }
     } catch (error) {
-      console.log('error.....: cheguei aqui merda', error)
       return {
         statusCode: 500,
         body: 'Error to return the Employees!'

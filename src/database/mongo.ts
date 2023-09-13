@@ -18,8 +18,6 @@ export const MongoClient = {
     const client = new Mongo(url);
     const db = client.db(process.env.MONGODB_NAME);
 
-    console.log(process.env.MONGODB_NAME)
-
     this.client = client;
     this.db = db;
   },
