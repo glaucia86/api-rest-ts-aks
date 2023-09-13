@@ -31,7 +31,7 @@ And to see if the container is running, run the following command below:
 docker ps
 ```
 
-After running the command above, access the browser at the following url: `localhost:3000/employees` 
+Now, in the root of the project, you will notice that there is a folder called: `rest-client`. Inside this folder, there is a file called: `employees.http`. This file is an HTTP request file that can be executed directly in Visual Studio Code. To execute this file, just click on the button: `Send Request` that is located in the upper right corner of the file. For testing purposes, create some employee records. And then, test the other HTTP requests.
 
 To stop the container, run the following command below:
 
@@ -39,9 +39,16 @@ To stop the container, run the following command below:
 docker compose down -- volumes
 ```
 
-## Diagram of the Application
+## About the Application
 
 (under construction)
+
+* SOLID Concepts
+* Clean Architecture
+* Using MongoDB as Database
+* Using Docker and Docker Compose
+* Using GitHub Packages as Docker Registry
+* (...)
 
 ## ❓ Questions? Comments? 
 
