@@ -1,4 +1,4 @@
-# TypeScript REST API Application with AKS + Terraform + CI/CD
+# TypeScript REST API Application with AKS
 
 A repository with a simple REST API application written in TypeScript and deployed to Azure Kubernetes Service (AKS) using Terraform and GitHub Actions for CI/CD.
 
@@ -10,6 +10,8 @@ A repository with a simple REST API application written in TypeScript and deploy
 - **[Azure Free Account](https://azure.microsoft.com/?WT.mc_id=javascript-97470-gllemos)**
 - **[Azure Kubernetes Service](https://learn.microsoft.com/en-us/azure/aks/)**
 - **[Terraform](https://www.hashicorp.com/products/terraform)**
+- **[GitHub Packages](https://github.com/features/packages)**
+- **[GitHub Actions](https://github.com/features/actions)**
 - Some Visual Studio Code Extensions:
   - **[Azure Tools Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack&WT.mc_id=javascript-97470-gllemos)**
   - **[TypeScript Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next&WT.mc_id=javascript-97470-gllemos)**
@@ -41,14 +43,11 @@ docker compose down -- volumes
 
 ## About the Application
 
-(under construction)
-
 * SOLID Concepts
 * Clean Architecture
 * Using MongoDB as Database
 * Using Docker and Docker Compose
 * Using GitHub Packages as Docker Registry
-* (...)
 
 ## ❓ Questions? Comments? 
 
