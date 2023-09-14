@@ -17,7 +17,12 @@
 				"GitHub.copilot",
 				"ms-azuretools.vscode-docker",
 				"mongodb.mongodb-vscode",
-				"humao.rest-client"
+				"humao.rest-client",
+				"hashicorp.terraform",
+				"betajob.modulestf",
+				"ms-azuretools.vscode-azureterraform",
+				"ms-vscode.vscode-node-azure-pack",
+				"ms-kubernetes-tools.vscode-kubernetes-tools"
 			]
 		}
 	}
