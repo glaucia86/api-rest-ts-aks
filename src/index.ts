@@ -18,6 +18,8 @@ import { MongoUpdateEmployeeRepository } from './repositories/update-employee/mo
 import { UpdateEmployeeController } from './controllers/update-employee/update-employee';
 import { MongoGetEmployeeRepository } from './repositories/get-employee/mongo-get-employee';
 import { GetEmployeeController } from './controllers/get-employee/get-employee';
+import { MongoDeleteEmployeeRepository } from './repositories/delete-employee/mongo-delete.employee';
+import { DeleteEmployeeController } from './controllers/delete-employee/delete-employee';
 
 
 const main = async () => {
@@ -84,6 +86,19 @@ const main = async () => {
 
     const { body, statusCode } = await getEmployeeController.handle({
       params: req.params
+    });
+
+    res.status(statusCode).send(body);
+  });
+
+  // DELETE: localhost:3000/employees/:id
+  app.delete('/employees/:id', async (req: Request, res: Response) => {
+    const mongoDeleteEmployeeRepository = new MongoDeleteEmployeeRepository();
+
+    const deleteEmployeeController = new DeleteEmployeeController(mongoDeleteEmployeeRepository);
+
+    const { body, statusCode } = await deleteEmployeeController.handle({
+      params: req.params,
     });
 
     res.status(statusCode).send(body);

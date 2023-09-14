@@ -6,6 +6,11 @@
  */
 
 import { Employee } from "../../models/employee";
+import { HttpRequest, HttpResponse } from "../protocols";
+
+export interface IDeleteEmployeeController {
+  handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<Employee>>
+}
 
 export interface IDeleteEmployeeRepository {
   deleteEmployee(id: string): Promise<Employee>

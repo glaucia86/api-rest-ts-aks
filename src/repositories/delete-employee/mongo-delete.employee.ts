@@ -10,7 +10,7 @@ import { IDeleteEmployeeRepository } from "../../controllers/delete-employee/pro
 import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
 
-export class MongoDeleteEmployee implements IDeleteEmployeeRepository {
+export class MongoDeleteEmployeeRepository implements IDeleteEmployeeRepository {
   async deleteEmployee(id: string): Promise<Employee> {
     try {
       const employee = await MongoClient.db
