@@ -10,7 +10,6 @@ import { Employee } from "../../models/employee";
 export interface UpdateEmployeeParams {
   firstName?: string;
   lastName?: string;
-  rolePosition?: string;
   password?: string;
 }
 

@@ -6,6 +6,7 @@
  */
 
 import { Employee } from "../../models/employee";
+import { badRequest, ok, serverError } from "../helpers";
 import { HttpRequest, HttpResponse, IController } from "../protocols";
 import { IUpdateEmployeeRepository, UpdateEmployeeParams } from "./protocols";
 
@@ -13,56 +14,40 @@ export class UpdateEmployeeController implements IController {
 
   constructor(private readonly updateEmployeeRepository: IUpdateEmployeeRepository) { }
 
-  async handle(httpRequest: HttpRequest<UpdateEmployeeParams>): Promise<HttpResponse<Employee>> {
+  async handle(httpRequest: HttpRequest<UpdateEmployeeParams>
+  ): Promise<HttpResponse<Employee | string>> {
     try {
       const id = httpRequest?.params?.id;
       const body = httpRequest?.body;
 
       if (!body) {
-        return {
-          statusCode: 400,
-          body: 'Missing fields'
-        };
+        return badRequest('Missing fields');
       }
 
       if (!id) {
-        return {
-          statusCode: 400,
-          body: 'Employee ID is required'
-        };
+        return badRequest('Missing Employee Id');
       }
 
       const allowedFieldsToUpdate: (keyof UpdateEmployeeParams)[] =
         [
           'firstName',
           'lastName',
-          'rolePosition',
           'password'
         ];
 
       const someFieldIsNotAllowedToUpdate = Object.keys(body).some(
-        field => !allowedFieldsToUpdate.includes(field as keyof UpdateEmployeeParams));
+        (key) => !allowedFieldsToUpdate.includes(key as keyof UpdateEmployeeParams)
+      );
 
       if (someFieldIsNotAllowedToUpdate) {
-        return {
-          statusCode: 400,
-          body: 'Some field is not allowed to update'
-        };
+        return badRequest('Some field is not allowed to update');
       }
 
       const employee = await this.updateEmployeeRepository.updateEmployee(id, body);
 
-      return {
-        statusCode: 200,
-        body: employee
-      };
-
+      return ok<Employee>(employee);
     } catch (error) {
-      return {
-        statusCode: 500,
-        body: 'Error to update Employee!'
-      }
+      return serverError();
     }
   }
-
 }

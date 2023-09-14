@@ -24,7 +24,6 @@ Content-Type: application/json
 {
   "firstName": "Glaucia",
   "lastName": "Lemos",
-  "rolePosition": "Developer Advocate",
   "password": "glau12396"
 }
 

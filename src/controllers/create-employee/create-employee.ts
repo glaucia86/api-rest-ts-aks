@@ -9,45 +9,33 @@ import validator from 'validator';
 import { Employee } from "../../models/employee";
 import { HttpRequest, HttpResponse, IController } from "../protocols";
 import { CreateEmployeeParams, ICreateEmployeeRepository } from "./protocols";
+import { badRequest, created, serverError } from '../helpers';
 
 export class CreateEmployeeController implements IController {
   constructor(private readonly createEmployeeRepository: ICreateEmployeeRepository) { }
 
   async handle(httpRequest: HttpRequest<CreateEmployeeParams>
-  ): Promise<HttpResponse<Employee>> {
+  ): Promise<HttpResponse<Employee | string>> {
     try {
       const requiredFields = ['firstName', 'lastName', 'email', 'rolePosition', 'password'];
 
       for (const field of requiredFields) {
         if (!httpRequest?.body?.[field as keyof CreateEmployeeParams]?.length) {
-          return {
-            statusCode: 400,
-            body: `Field ${field} is required`,
-          };
+          return badRequest(`Field ${field} is required`);
         }
       }
 
-      // verificar se o email é válido
       const isEmailValid = validator.isEmail(httpRequest.body!.email);
 
       if (!isEmailValid) {
-        return {
-          statusCode: 400,
-          body: 'E-mail is not valid',
-        };
+        return badRequest('E-mail is not valid');
       }
 
       const employee = await this.createEmployeeRepository.createEmployee(httpRequest.body!);
 
-      return {
-        statusCode: 201,
-        body: employee
-      }
+      return created<Employee>(employee);
     } catch (error) {
-      return {
-        statusCode: 500,
-        body: 'Something went wrong...'
-      }
+      return serverError();
     }
   }
 

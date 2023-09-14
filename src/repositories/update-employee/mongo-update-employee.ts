@@ -9,6 +9,7 @@ import { ObjectId } from "mongodb";
 import { IUpdateEmployeeRepository, UpdateEmployeeParams } from "../../controllers/update-employee/protocols";
 import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
+import { MongoEmployee } from '../mongo-protocols';
 
 export class MongoUpdateEmployeeRepository implements IUpdateEmployeeRepository {
   async updateEmployee(id: string, params: UpdateEmployeeParams): Promise<Employee> {
@@ -22,7 +23,7 @@ export class MongoUpdateEmployeeRepository implements IUpdateEmployeeRepository 
         });
 
       const employee = await MongoClient.db
-        .collection<Omit<Employee, 'id'>>('employees')
+        .collection<MongoEmployee>('employees')
         .findOne({ _id: new ObjectId(id) });
 
       if (!employee) {

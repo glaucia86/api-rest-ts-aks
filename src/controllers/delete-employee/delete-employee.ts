@@ -6,6 +6,7 @@
  */
 
 import { Employee } from "../../models/employee";
+import { badRequest, ok, serverError } from "../helpers";
 import { HttpRequest, HttpResponse, IController } from "../protocols";
 import { IDeleteEmployeeRepository } from "./protocols";
 
@@ -13,28 +14,19 @@ export class DeleteEmployeeController implements IController {
 
   constructor(private readonly deleteEmployeeRepository: IDeleteEmployeeRepository) { }
 
-  async handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<Employee>> {
+  async handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<Employee | string>> {
     try {
       const id = httpRequest?.params?.id;
 
       if (!id) {
-        return {
-          statusCode: 400,
-          body: 'Missing Employee Id'
-        }
+        return badRequest('Missing Employee Id');
       }
 
       const employee = await this.deleteEmployeeRepository.deleteEmployee(id);
 
-      return {
-        statusCode: 200,
-        body: employee
-      }
+      return ok<Employee>(employee)
     } catch (error) {
-      return {
-        statusCode: 500,
-        body: 'Error to delete employee'
-      }
+      return serverError();
     }
   }
 

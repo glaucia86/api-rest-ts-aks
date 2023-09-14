@@ -6,41 +6,30 @@
  */
 
 import { Employee } from "../../models/employee";
+import { badRequest, ok, serverError } from "../helpers";
 import { HttpRequest, HttpResponse, IController } from "../protocols";
 import { IGetEmployeeRepository } from "./protocols";
 
 export class GetEmployeeController implements IController {
   constructor(private readonly getEmployeeRepository: IGetEmployeeRepository) { }
 
-  async handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<Employee>> {
+  async handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<Employee | string>> {
     try {
       const id = httpRequest?.params?.id;
 
       if (!id) {
-        return {
-          statusCode: 400,
-          body: 'Employee ID is required',
-        };
+        return badRequest('Employee ID is required');
       }
 
       const employee = await this.getEmployeeRepository.getEmployeeById(id);
 
       if (!employee) {
-        return {
-          statusCode: 404,
-          body: 'Employee not found',
-        };
+        return badRequest('Employee not found');
       }
 
-      return {
-        statusCode: 200,
-        body: employee,
-      };
+      return ok<Employee>(employee);
     } catch (error) {
-      return {
-        statusCode: 500,
-        body: 'Error fetching Employee',
-      };
+      return serverError();
     }
   }
 }
