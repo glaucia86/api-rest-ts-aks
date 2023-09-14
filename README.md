@@ -21,6 +21,18 @@ A repository with a simple REST API application written in TypeScript and deploy
 
 ## 🔥 How to run the application locally?
 
+Before to run the Docker command, you will need to create in the root of the project a file called: `.env` and inside this file, you will need to add the following environment variables below:
+
+```bash
+PORT=3000
+
+MONGODB_URL=mongodb://root:password123@mongodb_container:27017/?authSource=admin
+MONGODB_LOCAL_URL=mongodb://root:password123@localhost:27017/?authSource=admin
+MONGODB_DATABASE_NAME=employees-database
+```
+
+> You will need to change the values of the environment variables above according to your MongoDB configuration.
+
 We are using Docker to run the application locally. For that, run the following commands below:
 
 ```bash
