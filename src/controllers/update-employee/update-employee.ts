@@ -11,36 +11,35 @@ import { HttpRequest, HttpResponse, IController } from "../protocols";
 import { IUpdateEmployeeRepository, UpdateEmployeeParams } from "./protocols";
 
 export class UpdateEmployeeController implements IController {
-
   constructor(private readonly updateEmployeeRepository: IUpdateEmployeeRepository) { }
 
-  async handle(httpRequest: HttpRequest<UpdateEmployeeParams>
+  async handle(
+    httpRequest: HttpRequest<UpdateEmployeeParams>
   ): Promise<HttpResponse<Employee | string>> {
     try {
       const id = httpRequest?.params?.id;
       const body = httpRequest?.body;
 
       if (!body) {
-        return badRequest('Missing fields');
+        return badRequest("Missing fields.");
       }
 
       if (!id) {
-        return badRequest('Missing Employee Id');
+        return badRequest("Missing employee id");
       }
 
-      const allowedFieldsToUpdate: (keyof UpdateEmployeeParams)[] =
-        [
-          'firstName',
-          'lastName',
-          'password'
-        ];
+      const allowedFieldsToUpdate: (keyof UpdateEmployeeParams)[] = [
+        "firstName",
+        "lastName",
+        "password",
+      ];
 
       const someFieldIsNotAllowedToUpdate = Object.keys(body).some(
         (key) => !allowedFieldsToUpdate.includes(key as keyof UpdateEmployeeParams)
       );
 
       if (someFieldIsNotAllowedToUpdate) {
-        return badRequest('Some field is not allowed to update');
+        return badRequest("Some received field is not allowed");
       }
 
       const employee = await this.updateEmployeeRepository.updateEmployee(id, body);

@@ -65,14 +65,16 @@ const main = async () => {
   });
 
   // PATCH: localhost:3000/employees/:id
-  app.patch('/employees/:id', async (req: Request, res: Response) => {
+  app.patch("/employees/:id", async (req, res) => {
     const mongoUpdateEmployeeRepository = new MongoUpdateEmployeeRepository();
 
-    const updateEmployeeController = new UpdateEmployeeController(mongoUpdateEmployeeRepository);
+    const updateEmployeeController = new UpdateEmployeeController(
+      mongoUpdateEmployeeRepository
+    );
 
     const { body, statusCode } = await updateEmployeeController.handle({
       body: req.body,
-      params: req.params
+      params: req.params,
     });
 
     res.status(statusCode).send(body);
