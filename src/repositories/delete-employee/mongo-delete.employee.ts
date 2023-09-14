@@ -35,11 +35,9 @@ export class MongoDeleteEmployee implements IDeleteEmployeeRepository {
         id: _id.toHexString(),
         ...restEmployee
       }
-
     } catch (error) {
       console.log('Error...:', error);
       throw error;
     }
   }
-
 }
