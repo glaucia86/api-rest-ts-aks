@@ -9,12 +9,13 @@ import { ObjectId } from "mongodb";
 import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
 import { IGetEmployeeRepository } from "../../controllers/get-employee/protocols";
+import { MongoEmployee } from "../mongo-protocols";
 
 export class MongoGetEmployeeRepository implements IGetEmployeeRepository {
   async getEmployeeById(id: string): Promise<Employee> {
     try {
       const employee = await MongoClient.db
-        .collection<Omit<Employee, 'id'>>('employees')
+        .collection<MongoEmployee>('employees')
         .findOne({ _id: new ObjectId(id) });
 
       // if the employee was not found, we throw an error

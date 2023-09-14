@@ -9,12 +9,13 @@ import { ObjectId } from "mongodb";
 import { IDeleteEmployeeRepository } from "../../controllers/delete-employee/protocols";
 import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
+import { MongoEmployee } from "../mongo-protocols";
 
 export class MongoDeleteEmployeeRepository implements IDeleteEmployeeRepository {
   async deleteEmployee(id: string): Promise<Employee> {
     try {
       const employee = await MongoClient.db
-        .collection<Omit<Employee, 'id'>>('employees')
+        .collection<MongoEmployee>('employees')
         .findOne({ _id: new ObjectId(id) });
 
       if (!employee) {

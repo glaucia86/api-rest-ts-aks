@@ -8,6 +8,7 @@
 import { CreateEmployeeParams, ICreateEmployeeRepository } from "../../controllers/create-employee/protocols";
 import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
+import { MongoEmployee } from "../mongo-protocols";
 
 export class MongoCreateEmployeeRepository implements ICreateEmployeeRepository {
   async createEmployee(params: CreateEmployeeParams): Promise<Employee> {
@@ -20,7 +21,7 @@ export class MongoCreateEmployeeRepository implements ICreateEmployeeRepository 
 
       // here we are searching if the employee was created
       const employee = await MongoClient.db
-        .collection<Omit<Employee, 'id'>>('employees')
+        .collection<MongoEmployee>('employees')
         .findOne({ _id: insertedId });
 
       // if the employee was not created, we throw an error

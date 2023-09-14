@@ -8,12 +8,13 @@
 import { IGetEmployeesRepository } from "../../controllers/get-employees/protocols";
 import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
+import { MongoEmployee } from "../mongo-protocols";
 
 export class MongoGetEmployeesRepository implements IGetEmployeesRepository {
 
   async getEmployees(): Promise<Employee[]> {
     const employees = await MongoClient.db
-      .collection<Omit<Employee, "id">>('employees')
+      .collection<MongoEmployee>('employees')
       .find({})
       .toArray();
 
