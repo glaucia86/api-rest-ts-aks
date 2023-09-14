@@ -9,6 +9,6 @@ COPY --chown=node package*.json ./
 RUN npm install
 
 # Quando fizer a entrega descomentar esse código
-#CMD ["npm", "run", "start:dev"]
+CMD ["npm", "run", "start:dev"]
 
-CMD ["tail", "-f", "/dev/null"]
+#CMD ["tail", "-f", "/dev/null"]
