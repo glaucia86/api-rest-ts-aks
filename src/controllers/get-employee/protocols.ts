@@ -6,11 +6,6 @@
  */
 
 import { Employee } from "../../models/employee";
-import { HttpRequest, HttpResponse } from "../protocols";
-
-export interface IGetEmployeeController {
-  handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<Employee>>;
-}
 
 export interface IGetEmployeeRepository {
   getEmployeeById(id: string): Promise<Employee | null>

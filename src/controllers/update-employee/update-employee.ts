@@ -6,17 +6,24 @@
  */
 
 import { Employee } from "../../models/employee";
-import { HttpRequest, HttpResponse } from "../protocols";
-import { IUpdateEmployeeController, IUpdateEmployeeRepository, UpdateEmployeeParams } from "./protocols";
+import { HttpRequest, HttpResponse, IController } from "../protocols";
+import { IUpdateEmployeeRepository, UpdateEmployeeParams } from "./protocols";
 
-export class UpdateEmployeeController implements IUpdateEmployeeController {
+export class UpdateEmployeeController implements IController {
 
   constructor(private readonly updateEmployeeRepository: IUpdateEmployeeRepository) { }
 
-  async handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<Employee>> {
+  async handle(httpRequest: HttpRequest<UpdateEmployeeParams>): Promise<HttpResponse<Employee>> {
     try {
       const id = httpRequest?.params?.id;
       const body = httpRequest?.body;
+
+      if (!body) {
+        return {
+          statusCode: 400,
+          body: 'Missing fields'
+        };
+      }
 
       if (!id) {
         return {

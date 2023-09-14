@@ -6,12 +6,6 @@
  */
 
 import { Employee } from "../../models/employee";
-import { HttpRequest, HttpResponse } from "../protocols";
-
-export interface ICreateEmployeeController {
-  handle(httpRequest: HttpRequest<CreateEmployeeParams>
-  ): Promise<HttpResponse<Employee>>;
-}
 
 export interface CreateEmployeeParams {
   firstName: string;

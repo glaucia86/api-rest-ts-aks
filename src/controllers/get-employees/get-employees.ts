@@ -5,9 +5,10 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
-import { IGetEmployeesController, IGetEmployeesRepository } from "./protocols";
+import { IController } from "../protocols";
+import { IGetEmployeesRepository } from "./protocols";
 
-export class GetEmployeesController implements IGetEmployeesController {
+export class GetEmployeesController implements IController {
   constructor(private readonly getEmployeesRepository: IGetEmployeesRepository) { }
 
   async handle() {

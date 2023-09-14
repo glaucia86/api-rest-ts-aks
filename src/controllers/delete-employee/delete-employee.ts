@@ -6,10 +6,10 @@
  */
 
 import { Employee } from "../../models/employee";
-import { HttpRequest, HttpResponse } from "../protocols";
-import { IDeleteEmployeeController, IDeleteEmployeeRepository } from "./protocols";
+import { HttpRequest, HttpResponse, IController } from "../protocols";
+import { IDeleteEmployeeRepository } from "./protocols";
 
-export class DeleteEmployeeController implements IDeleteEmployeeController {
+export class DeleteEmployeeController implements IController {
 
   constructor(private readonly deleteEmployeeRepository: IDeleteEmployeeRepository) { }
 

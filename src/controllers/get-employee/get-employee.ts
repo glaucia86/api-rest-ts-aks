@@ -6,10 +6,10 @@
  */
 
 import { Employee } from "../../models/employee";
-import { HttpRequest, HttpResponse } from "../protocols";
-import { IGetEmployeeController, IGetEmployeeRepository } from "./protocols";
+import { HttpRequest, HttpResponse, IController } from "../protocols";
+import { IGetEmployeeRepository } from "./protocols";
 
-export class GetEmployeeController implements IGetEmployeeController {
+export class GetEmployeeController implements IController {
   constructor(private readonly getEmployeeRepository: IGetEmployeeRepository) { }
 
   async handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<Employee>> {

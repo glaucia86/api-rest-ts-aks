@@ -6,17 +6,12 @@
  */
 
 import { Employee } from "../../models/employee";
-import { HttpRequest, HttpResponse } from "../protocols";
 
 export interface UpdateEmployeeParams {
   firstName?: string;
   lastName?: string;
   rolePosition?: string;
   password?: string;
-}
-
-export interface IUpdateEmployeeController {
-  handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<Employee>>;
 }
 
 export interface IUpdateEmployeeRepository {

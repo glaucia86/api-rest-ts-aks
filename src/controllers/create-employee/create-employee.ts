@@ -7,10 +7,10 @@
 
 import validator from 'validator';
 import { Employee } from "../../models/employee";
-import { HttpRequest, HttpResponse } from "../protocols";
-import { CreateEmployeeParams, ICreateEmployeeController, ICreateEmployeeRepository } from "./protocols";
+import { HttpRequest, HttpResponse, IController } from "../protocols";
+import { CreateEmployeeParams, ICreateEmployeeRepository } from "./protocols";
 
-export class CreateEmployeeController implements ICreateEmployeeController {
+export class CreateEmployeeController implements IController {
   constructor(private readonly createEmployeeRepository: ICreateEmployeeRepository) { }
 
   async handle(httpRequest: HttpRequest<CreateEmployeeParams>
