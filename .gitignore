@@ -1,3 +1,4 @@
 node_modules
 build
 .env
+terraform-provider-azurerm_v3.47.0_x5
