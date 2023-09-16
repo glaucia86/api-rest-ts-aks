@@ -1,14 +1,14 @@
 /**
- * file: src/controllers/update-employee/update-employee.ts
+ * file: src/controllers/employee/update-employee-controller.ts
  * description: file responsible for implement the class 'UpdateEmployeeController'
  * data: 09/13/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
 import { Employee } from "../../models/employee";
-import { badRequest, ok, serverError } from "../helpers";
-import { HttpRequest, HttpResponse, IController } from "../protocols";
-import { IUpdateEmployeeRepository, UpdateEmployeeParams } from "./protocols";
+import { badRequest, ok, serverError } from "../protocols/helpers-protocols";
+import { HttpRequest, HttpResponse, IController } from "../protocols/http-protocols";
+import { IUpdateEmployeeRepository, UpdateEmployeeParams } from "../protocols/employee/update-employee-protocols";
 
 export class UpdateEmployeeController implements IController {
   constructor(private readonly updateEmployeeRepository: IUpdateEmployeeRepository) { }

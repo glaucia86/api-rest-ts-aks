@@ -5,7 +5,7 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
-import { IGetEmployeesRepository } from "../../controllers/get-employees/protocols";
+import { IGetEmployeesRepository } from "../../controllers/protocols/employee/get-employees-protocols";
 import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
 import { MongoEmployee } from "../mongo-protocols";

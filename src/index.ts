@@ -12,13 +12,7 @@ import { config } from 'dotenv';
 import { MongoClient } from './database/mongo';
 
 import * as repositories from './repositories';
-
-import { GetEmployeesController } from './controllers/get-employees/get-employees';
-import { CreateEmployeeController } from './controllers/create-employee/create-employee';
-import { UpdateEmployeeController } from './controllers/update-employee/update-employee';
-import { GetEmployeeController } from './controllers/get-employee/get-employee';
-
-import { DeleteEmployeeController } from './controllers/delete-employee/delete-employee';
+import * as controllers from './controllers';
 
 const main = async () => {
 
@@ -41,7 +35,8 @@ const main = async () => {
   // GET: localhost:3000/employees
   app.get('/employees', async (_req: Request, res: Response) => {
 
-    const getEmployeesController = new GetEmployeesController(new repositories.MongoGetEmployeesRepository());
+    const getEmployeesController = new controllers.GetEmployeesController(
+      new repositories.MongoGetEmployeesRepository());
 
     const { body, statusCode } = await getEmployeesController.handle();
 
@@ -51,7 +46,8 @@ const main = async () => {
   // POST: localhost:3000/employees
   app.post('/employees', async (req: Request, res: Response) => {
 
-    const createEmployeeController = new CreateEmployeeController(new repositories.MongoCreateEmployeeRepository());
+    const createEmployeeController = new controllers.CreateEmployeeController(
+      new repositories.MongoCreateEmployeeRepository());
 
     const { body, statusCode } = await createEmployeeController.handle({
       body: req.body
@@ -63,7 +59,8 @@ const main = async () => {
   // PATCH: localhost:3000/employees/:id
   app.patch("/employees/:id", async (req, res) => {
 
-    const updateEmployeeController = new UpdateEmployeeController(new repositories.MongoUpdateEmployeeRepository());
+    const updateEmployeeController = new controllers.UpdateEmployeeController(
+      new repositories.MongoUpdateEmployeeRepository());
 
     const { body, statusCode } = await updateEmployeeController.handle({
       body: req.body,
@@ -76,7 +73,8 @@ const main = async () => {
   // GET (By ID): localhost:3000/employees/:id
   app.get('/employees/:id', async (req: Request, res: Response) => {
 
-    const getEmployeeController = new GetEmployeeController(new repositories.MongoGetEmployeeRepository());
+    const getEmployeeController = new controllers.GetEmployeeController(
+      new repositories.MongoGetEmployeeRepository());
 
     const { body, statusCode } = await getEmployeeController.handle({
       params: req.params
@@ -87,8 +85,9 @@ const main = async () => {
 
   // DELETE: localhost:3000/employees/:id
   app.delete('/employees/:id', async (req: Request, res: Response) => {
-    
-    const deleteEmployeeController = new DeleteEmployeeController(new repositories.MongoDeleteEmployeeRepository());
+
+    const deleteEmployeeController = new controllers.DeleteEmployeeController(
+      new repositories.MongoDeleteEmployeeRepository());
 
     const { body, statusCode } = await deleteEmployeeController.handle({
       params: req.params,
@@ -96,7 +95,6 @@ const main = async () => {
 
     res.status(statusCode).send(body);
   });
-
 
   const port = process.env.PORT || 3000;
 

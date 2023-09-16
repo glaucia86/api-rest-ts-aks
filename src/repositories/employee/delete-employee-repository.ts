@@ -6,7 +6,7 @@
  */
 
 import { ObjectId } from "mongodb";
-import { IDeleteEmployeeRepository } from "../../controllers/delete-employee/protocols";
+import { IDeleteEmployeeRepository } from "../../controllers/protocols/employee/delete-employee-protocols";
 import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
 import { MongoEmployee } from "../mongo-protocols";

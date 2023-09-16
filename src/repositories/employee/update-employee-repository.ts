@@ -9,7 +9,7 @@ import { ObjectId } from "mongodb";
 import {
   IUpdateEmployeeRepository,
   UpdateEmployeeParams,
-} from "../../controllers/update-employee/protocols";
+} from "../../controllers/protocols/employee/update-employee-protocols";
 import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
 import { MongoEmployee } from "../mongo-protocols";

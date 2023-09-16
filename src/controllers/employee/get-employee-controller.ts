@@ -1,14 +1,14 @@
 /**
- * file: src/controllers/get-employee/get-employee.ts
+ * file: src/controllers/employee/get-employee-controller.ts
  * description: file responsible for retrieve employee by id.
  * data: 09/13/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
 import { Employee } from "../../models/employee";
-import { badRequest, ok, serverError } from "../helpers";
-import { HttpRequest, HttpResponse, IController } from "../protocols";
-import { IGetEmployeeRepository } from "./protocols";
+import { badRequest, ok, serverError } from "../protocols/helpers-protocols";
+import { HttpRequest, HttpResponse, IController } from "../protocols/http-protocols";
+import { IGetEmployeeRepository } from "../protocols/employee/get-employee-protocols";
 
 export class GetEmployeeController implements IController {
   constructor(private readonly getEmployeeRepository: IGetEmployeeRepository) { }

@@ -8,7 +8,7 @@
 import { ObjectId } from "mongodb";
 import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
-import { IGetEmployeeRepository } from "../../controllers/get-employee/protocols";
+import { IGetEmployeeRepository } from "../../controllers/protocols/employee/get-employee-protocols";
 import { MongoEmployee } from "../mongo-protocols";
 
 export class MongoGetEmployeeRepository implements IGetEmployeeRepository {

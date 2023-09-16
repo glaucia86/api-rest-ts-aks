@@ -5,7 +5,7 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
-import { CreateEmployeeParams, ICreateEmployeeRepository } from "../../controllers/create-employee/protocols";
+import { CreateEmployeeParams, ICreateEmployeeRepository } from "../../controllers/protocols/employee/create-employee-protocols";
 import { MongoClient } from "../../database/mongo";
 import { Employee } from "../../models/employee";
 import { MongoEmployee } from "../mongo-protocols";

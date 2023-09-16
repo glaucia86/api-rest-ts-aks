@@ -5,7 +5,7 @@
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
-import { HttpResponse, HttpStatusCode } from "./protocols";
+import { HttpResponse, HttpStatusCode } from "./http-protocols";
 
 export const ok = <T>(body: any): HttpResponse<T> => ({
   statusCode: HttpStatusCode.OK,

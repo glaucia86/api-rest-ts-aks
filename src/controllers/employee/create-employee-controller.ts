@@ -1,5 +1,5 @@
 /**
- * file: src/controllers/create-employee/create-employee.ts
+ * file: src/controllers/employee/create-employee-controller.ts
  * description: file responsible for implement the class 'CreateEmployeeController'
  * data: 09/13/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
@@ -7,9 +7,9 @@
 
 import validator from 'validator';
 import { Employee } from "../../models/employee";
-import { HttpRequest, HttpResponse, IController } from "../protocols";
-import { CreateEmployeeParams, ICreateEmployeeRepository } from "./protocols";
-import { badRequest, created, serverError } from '../helpers';
+import { HttpRequest, HttpResponse, IController } from "../protocols/http-protocols";
+import { CreateEmployeeParams, ICreateEmployeeRepository } from "../protocols/employee/create-employee-protocols";
+import { badRequest, created, serverError } from '../protocols/helpers-protocols';
 
 export class CreateEmployeeController implements IController {
   constructor(private readonly createEmployeeRepository: ICreateEmployeeRepository) { }

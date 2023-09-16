@@ -1,5 +1,5 @@
 /**
- * file: src/repositories/employee/index.ts
+ * file: src/repositories/index.ts
  * description: file responsible for index of all repositories.
  * data: 09/15/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
