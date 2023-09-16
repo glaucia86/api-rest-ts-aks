@@ -47,6 +47,22 @@ docker ps
 
 Now, in the root of the project, you will notice that there is a folder called: `rest-client`. Inside this folder, there is a file called: `employees.http`. This file is an HTTP request file that can be executed directly in Visual Studio Code. To execute this file, just click on the button: `Send Request` that is located in the upper right corner of the file. For testing purposes, create some employee records. And then, test the other HTTP requests.
 
+But if you want to see if the docker container is running correctly and up the application, just open your browser and type the following address below:
+
+```bash
+http://localhost:3000
+```
+
+If you see the following message below, it's because the application is running correctly:
+
+```bash
+{
+    "success": "true",
+    "message": "Welcome to the DevSquad Employee API!",
+    "version": "1.0.0"
+}
+```
+
 To stop the container, run the following command below:
 
 ```bash
