@@ -1,7 +1,7 @@
 /**
  * file: src/index.ts
  * description: file responsible for the main entry point of the application.
- * data: 09/11/2023
+ * data: 09/15/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
  */
 
@@ -9,18 +9,20 @@ import express, { Application, Request, Response } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import { config } from 'dotenv';
-import { GetEmployeesController } from './controllers/get-employees/get-employees';
-import { MongoGetEmployeesRepository } from './repositories/get-employees/mongo-get-employees';
 import { MongoClient } from './database/mongo';
-import { MongoCreateEmployeeRepository } from './repositories/create-employees/mongo-create-employee';
-import { CreateEmployeeController } from './controllers/create-employee/create-employee';
-import { MongoUpdateEmployeeRepository } from './repositories/update-employee/mongo-update-employee';
-import { UpdateEmployeeController } from './controllers/update-employee/update-employee';
-import { MongoGetEmployeeRepository } from './repositories/get-employee/mongo-get-employee';
-import { GetEmployeeController } from './controllers/get-employee/get-employee';
-import { MongoDeleteEmployeeRepository } from './repositories/delete-employee/mongo-delete.employee';
-import { DeleteEmployeeController } from './controllers/delete-employee/delete-employee';
 
+import { MongoCreateEmployeeRepository } from './repositories/employee/create-employee-repository';
+import { MongoDeleteEmployeeRepository } from './repositories/employee/delete-employee-repository';
+import { MongoUpdateEmployeeRepository } from './repositories/employee/update-employee-repository';
+import { MongoGetEmployeeRepository } from './repositories/employee/get-employee-repository';
+import { MongoGetEmployeesRepository } from './repositories/employee/get-employees-repository';
+
+import { GetEmployeesController } from './controllers/get-employees/get-employees';
+import { CreateEmployeeController } from './controllers/create-employee/create-employee';
+import { UpdateEmployeeController } from './controllers/update-employee/update-employee';
+import { GetEmployeeController } from './controllers/get-employee/get-employee';
+
+import { DeleteEmployeeController } from './controllers/delete-employee/delete-employee';
 
 const main = async () => {
 
