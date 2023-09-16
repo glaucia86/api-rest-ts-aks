@@ -1,5 +1,5 @@
 /**
- * file: src/repositories/create-employees/mongo-create-employee.ts
+ * file: src/repositories/employee/create-employee-repository.ts
  * description: file responsible for implement the class 'MongoCreateEmployeeRepository'
  * data: 09/13/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>

@@ -1,5 +1,5 @@
 /**
- * file: src/repositories/delete-employee/mongo-delete.employee.ts
+ * file: src/repositories/employee/delete-employee-repository.ts
  * description: file responsible for implement the class 'MongoDeleteEmployee'
  * data: 09/13/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>

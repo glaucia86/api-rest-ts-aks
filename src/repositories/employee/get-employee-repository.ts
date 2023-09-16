@@ -1,5 +1,5 @@
 /**
- * file: src/repositories/get-employee/mongo-get-employee.ts
+ * file: src/repositories/employee/get-employee-repository.ts
  * description: file responsible for implement the class 'MongoGetEmployeeRepository'
  * data: 09/13/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>

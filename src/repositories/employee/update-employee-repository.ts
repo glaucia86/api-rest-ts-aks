@@ -1,5 +1,5 @@
 /**
- * file: src/repositories/update-employee/mongo-update-employee.ts
+ * file: src/repositories/employee/update-employee-repository.ts
  * description: file responsible for implement the class 'MongoUpdateEmployeeRepository'
  * data: 09/13/2023
  * author: Glaucia Lemos <Twitter: @glaucia_lemos86>
