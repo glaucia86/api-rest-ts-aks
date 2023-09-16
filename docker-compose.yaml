@@ -5,12 +5,14 @@ services:
     image: mongo:latest
     container_name: mongodb_container
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
     ports:
       - '27017:27017'
     volumes:
       - mongodb_data_container:/data/db
+    env_file:
+      - .env
 
   app:
     build: .
