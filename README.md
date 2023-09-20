@@ -26,8 +26,8 @@ Before to run the Docker command, you will need to create in the root of the pro
 ```bash
 PORT=3000
 
-MONGODB_URL=mongodb://root:password123@mongodb_container:27017/?authSource=admin
-MONGODB_LOCAL_URL=mongodb://root:password123@localhost:27017/?authSource=admin
+MONGODB_URL=mongodb://root:<your-password>@mongodb_container:27017/?authSource=admin
+MONGODB_LOCAL_URL=mongodb://root:<your-password>@localhost:27017/?authSource=admin
 MONGODB_DATABASE_NAME=employees-database
 ```
 
