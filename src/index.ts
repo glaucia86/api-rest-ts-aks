@@ -26,7 +26,6 @@ const main = async () => {
     console.error('Error connecting to MongoDB:', error);
   }
 
-
   app.use(morgan('dev'));
   app.use(helmet());
   app.use(express.json());
