@@ -28,5 +28,4 @@ jobs:
         run: |
           docker login --username glaucia86 --password ${{ secrets.GH_PACKAGE_PERSONAL_TOKEN }} ghcr.io
           docker build . --tag ghcr.io/glaucia86/api-rest-ts-aks-ghcr:latest
-          docker run ghcr.io/glaucia86/api-rest-ts-aks-ghcr:latest
           docker push ghcr.io/glaucia86/api-rest-ts-aks-ghcr:latest
