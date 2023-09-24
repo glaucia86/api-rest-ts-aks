@@ -1,0 +1,28 @@
+# To avoid cluttering the Docker build context with lots of files from the local directory, we
+# exclude ALL files by default, and whitelist which files from the local directory can be pulled
+# into the Docker build context. (Note that some of these paths, like node_modules, do need to exist
+# inside the container, but we do so by re-creating them during "docker build" rather than
+# inheriting them in the build context.)
+
+# Ignore everything by default.
+*
+
+# Exceptions to the above rule (things that we DO want to include) need a negation and are listed
+# below:
+
+# Include documentation and licensing files.
+!LICENSE.txt
+!README.md
+
+# Source files that we need in order to build.
+!.docker.npmrc
+!package-lock.json
+!package.json
+!src/**/*
+!tsconfig.json
+!typings/**/*
+
+# Include files needed for running lint and tests as a part of building.
+!.eslintrc
+!test/**/*
+!test/.eslintrc
