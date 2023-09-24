@@ -1,13 +1,19 @@
 name: Create and Publish a Docker Image to GHCR image/package
 
 on:
-  workflow_dispatch:
-    push:
-      branches:
-        - main
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
+
+env:
+  # Use docker.io for DockerHub if empty
+  REGISTRY: ghcr.io
+
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build_and_publish:
@@ -17,5 +23,9 @@ jobs:
       packages: write
 
     steps:
-      - name: Call Docker Publish Workflow
-        uses: .github/workflows/docker-publish-workflow.yaml
+      - uses: actions/checkout@v3
+      - name: Build and Push the Image
+        run: |
+          docker login --username glaucia86 --password ${{ secrets.GH_PACKAGE_PERSONAL_TOKEN }} ghcr.io
+          docker build . --tag ghcr.io/glaucia86/api-rest-ts-aks-ghcr:latest
+          docker push ghcr.io/glaucia86/api-rest-ts-aks-ghcr:latest
