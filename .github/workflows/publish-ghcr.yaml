@@ -18,4 +18,4 @@ jobs:
 
     steps:
       - name: Call Docker Publish Workflow
-        uses: ./.github/workflows/docker-publish-workflow.yaml
+        uses: .github/workflows/docker-publish-workflow.yaml
