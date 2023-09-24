@@ -24,16 +24,6 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout the Repo
-        uses: actions/checkout@v4
-
-      - name: Log in to the Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build and Push Docker Image
         run: |
           docker login --username glaucia86 --password ${{ secrets.GH_PACKAGE_PERSONAL_TOKEN }} ghcr.io
